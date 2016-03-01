@@ -1,5 +1,5 @@
-# peach-pay
-NodeJS Module for PeachPayment
+# Peach Pay
+[![Gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg?style=flat-square)](https://gitter.im/Starchup/peach-pay?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 #### Init
 ```
