@@ -5,17 +5,14 @@ var rp = require('request-promise');
 var querystring = require('querystring');
 
 var config = {
-    authentication:
-    {
+    authentication: {
         'authentication.userId': null,
         'authentication.password': null,
         'authentication.entityId': null
     },
-    options:
-    {
+    options: {
         uri: 'https://test.oppwa.com',
-        headers:
-        {
+        headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         json: true
@@ -26,8 +23,7 @@ var config = {
 /**
  * Constructor
  */
-var peach = function (options)
-{
+var peach = function(options) {
     if (!options.userId) throw new Error('Missing userId');
     if (!options.password) throw new Error('Missing password');
     if (!options.entityId) throw new Error('Missing entityId');
@@ -36,23 +32,19 @@ var peach = function (options)
     config.authentication['authentication.password'] = options.password;
     config.authentication['authentication.entityId'] = options.entityId;
 
-    if (options.production !== null && options.production) config.options.uri = 'PRODUCTION';
+    if (options.production !== null && options.production) config.options.uri = 'https://oppwa.com';
 };
 
 /**
  * Utility
  */
-function request(path, method, parameters)
-{
-    function buildBody(data)
-    {
+function request(path, method, parameters) {
+    function buildBody(data) {
         var obj = {};
-        for (var attrname in config.authentication)
-        {
+        for (var attrname in config.authentication) {
             obj[attrname] = config.authentication[attrname];
         }
-        for (var attrname in data)
-        {
+        for (var attrname in data) {
             obj[attrname] = data[attrname];
         }
         return obj;
@@ -61,8 +53,7 @@ function request(path, method, parameters)
     var body = buildBody(parameters);
 
     var options = {};
-    for (var attrname in config.options)
-    {
+    for (var attrname in config.options) {
         options[attrname] = config.options[attrname];
     }
     options.uri += path;
@@ -76,8 +67,7 @@ function request(path, method, parameters)
  * Methods
  */
 var transaction = {
-    create: function (data)
-    {
+    create: function(data) {
         if (!data.paymentId) throw new Error('Missing paymentId');
         if (!data.amount) throw new Error('Missing amount');
 
@@ -91,8 +81,7 @@ var transaction = {
         return request(path, 'POST', body);
     },
 
-    refund: function (data)
-    {
+    refund: function(data) {
         if (!data.transactionId) throw new Error('Missing transactionId');
         if (!data.amount) throw new Error('Missing amount');
 
@@ -108,8 +97,7 @@ var transaction = {
 };
 
 var card = {
-    create: function (data)
-    {
+    create: function(data) {
         if (!data.name) throw new Error('Missing payer name');
         if (!data.paymentBrand) throw new Error('Missing payment Brand');
         if (!data.ccNumber) throw new Error('Missing card number');
@@ -128,8 +116,7 @@ var card = {
         };
 
         var path = '/v1/registrations';
-        return request(path, 'POST', body).then(function (res)
-        {
+        return request(path, 'POST', body).then(function(res) {
             if (res && res.id) return res.id;
             return Promise.reject(res.result.description);
         });

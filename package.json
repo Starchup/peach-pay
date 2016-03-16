@@ -1,10 +1,9 @@
 {
     "name": "peach-pay",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "./peach",
     "description": "Peach Payments for Node JS",
-    "author":
-    {
+    "author": {
         "name": "Starchup Inc",
         "email": "geoffroy@starchup.com",
         "url": "http://starchup.com"
@@ -12,25 +11,20 @@
     "keywords": [
         "starchup"
     ],
-    "repository":
-    {
+    "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com/Starchup/peach-pay.git"
     },
-    "engines":
-    {
+    "engines": {
         "node": ">= 0.10"
     },
-    "dependencies":
-    {
+    "dependencies": {
         "request-promise": "2.0.1",
         "querystring": "0.2.0"
     },
-    "scripts":
-    {},
+    "scripts": {},
     "readmeFilename": "README.md",
-    "bugs":
-    {
+    "bugs": {
         "url": "https://github.com/Starchup/peach-pay/issues"
     },
     "homepage": "https://github.com/Starchup/peach-pay"
