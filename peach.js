@@ -74,7 +74,7 @@ var transaction = {
         var body = {
             'amount': data.amount,
             'currency': config.currency,
-            'paymentType': 'CD',
+            'paymentType': 'DB',
         }
         var path = '/v1/registrations/' + data.paymentId + '/payments';
 
