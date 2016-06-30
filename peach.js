@@ -74,7 +74,10 @@ var transaction = {
         var body = {
             'amount': data.amount,
             'currency': config.currency,
-            'paymentType': 'DB',
+            'paymentType': 'DB'
+        }
+        if (data.transactionIdentifier) {
+            body.merchantTransactionId = data.transactionIdentifier;
         }
         var path = '/v1/registrations/' + data.paymentId + '/payments';
 

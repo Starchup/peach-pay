@@ -1,6 +1,6 @@
 {
     "name": "peach-pay",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "./peach",
     "description": "Peach Payments for Node JS",
     "author": {
